@@ -37,9 +37,9 @@ def isGreater(a, b):
 numA = int(input("Type A: "))
 numB = int(input("Type B: "))
 if isGreater(numA, numB):
-    print(f"Yep! {numA} is greater then {numB}!")
+    print(f"Yep! {numA} is greater than {numB}!")
 else:
-    print(f"Nope! {numA} is not greater then {numB}!")
+    print(f"Nope! {numA} is not greater than {numB}!")
 
 def isInRange(num, min, max):
     return num >= min and num <= max
