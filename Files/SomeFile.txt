@@ -1,0 +1,2 @@
+Těleso ponořené do kapaliny je nadlehčováno silou, která se rovná tíze kapaliny tělesem vytlačené.
+Algoritmus je obecný postup řešení zadané úlohy v určité posloupnosti o konečném počtu kroků, jehož výsledkem je reálné řešení.
