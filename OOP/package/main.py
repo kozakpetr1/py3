@@ -8,3 +8,5 @@ print(myText.getS())
 
 myText.replaS("Who", "How", "Who are you?")
 print(myText.getS())
+
+del myText

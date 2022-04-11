@@ -14,6 +14,7 @@ class Texto:
         :type str: str
         """
 
+        print('Contructor called. Object ctreated.')
         self.str = str
     
     def getS(self):
@@ -43,4 +44,6 @@ class Texto:
 
         if not str == None: self.str = str
         self.str = self.str.replace(what, byWhat)
-        
+
+    def __del__(self):
+        print('Destructor called. Object destructed.')
