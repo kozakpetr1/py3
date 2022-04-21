@@ -17,7 +17,7 @@ class Pes:
 class Maltezak(Pes):
 
     def zastekej(self, zvuk="hafi hafi hafi"):
-        return f"Maltézký psík {self.jmeno} štěká {zvuk}."
+        return Pes.zastekej(self, zvuk) + f" Maltézký psík {self.jmeno} štěká {zvuk}."
 
 class Bulldog(Pes):
 
