@@ -10,6 +10,10 @@ try:
         cursor.execute("select database();")
         record = cursor.fetchone()
         print("You're connected to database: ", record)
+        query = ("SELECT * FROM lang")
+        cursor.execute(query)
+        for (idlang, designation, created) in cursor:
+            print("Language {} was created in {}.".format(designation, created))
 
 except Error as e:
     print("Error while connecting to MySQL", e)
@@ -17,4 +21,4 @@ finally:
     if connection.is_connected():
         cursor.close()
         connection.close()
-        print("MySQL connection is closed")
+        print("MySQL connection is closed.")
