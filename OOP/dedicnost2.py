@@ -20,7 +20,7 @@ class Usecka(Bod):
 
     def __init__(self, u=0, v=0, x=0, y=0):
         Bod.__init__(self, x, y)
-        # super().__init__(x, y)
+        # super().__init__(x, y) - Python 3
         self.u = u
         self.v = v
     
