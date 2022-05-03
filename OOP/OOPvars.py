@@ -2,20 +2,16 @@ class myClass:
     myStaticVar = 0; # statická proměnná
     
     def __init__(self, vval, sval):
-        self.myDynamicVar = vval
-        myClass.myStaticVar = sval
+        self.myDynamicVar = vval # inicializace dynamické proměnné
+        myClass.myStaticVar = sval # inicializace statické proměnné
 
-    def incrementVal(self):
+    # inkrementace statické proměnné
+    def incStatVal(self):
         myClass.myStaticVar = myClass.myStaticVar + 1
 
-print(myClass.myStaticVar)
-C = myClass(5, 4)
-print(myClass.myStaticVar)
-print(C.myStaticVar)
-print(C.myDynamicVar)
-C.incrementVal()
-print(myClass.myStaticVar)
-print(C.myStaticVar)
+    def incDynVal(self):
+        self.myDynamicVar = self.myDynamicVar + 1
+
 
 D = myClass(10, 6)
 print(C.myDynamicVar)
