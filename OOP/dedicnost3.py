@@ -2,21 +2,18 @@ import os
 clear = lambda: os.system('cls')
 
 class Father:
-    x = 50
     def __init__(self):
-        print("Father", self.x)
+        print("Father")
 
 class Mother:
-    x = 40
     def __init__(self):
-        print("Mother", self.x)
+        print("Mother")
     
 class Child(Father, Mother):
-    x = 10
     def __init__(self):
         Father.__init__(self)
         Mother.__init__(self)
-        print("Child", self.x)
+        print("Child")
         
 clear()
    
