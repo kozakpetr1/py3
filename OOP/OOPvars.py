@@ -9,13 +9,8 @@ class myClass:
     def incStatVal(self):
         myClass.myStaticVar = myClass.myStaticVar + 1
 
+    # inkrementace dynamické proměnné
     def incDynVal(self):
         self.myDynamicVar = self.myDynamicVar + 1
 
 
-D = myClass(10, 6)
-print(C.myDynamicVar)
-print(D.myDynamicVar)
-print(C.myStaticVar)
-print(D.myStaticVar)
-print(myClass.myStaticVar)
