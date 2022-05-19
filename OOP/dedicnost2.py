@@ -40,6 +40,5 @@ B.nastavSouradnice(1, -2)
 print(B)
 
 U = Usecka(1, 3, 4, -1)
-# U.nastavSouradnice(1, 3, 4, -1)
 print(U)
 print(f"{U.delkaUsecky():.2f}")

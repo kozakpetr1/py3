@@ -23,8 +23,10 @@ class Usecka:
         self.__b = Bod(x, y)
     
     def nastavSouradnice(self, u, v, x, y):
-        self.__a = Bod(u, v)
-        self.__b = Bod(x, y)
+        self.__a.x = u
+        self.__a.y = v
+        self.__b.x = x
+        self.__b.y = y
 
     def __str__(self):
         return  f"[{self.__a.x},{self.__a.y}][{self.__b.x},{self.__b.y}]"
