@@ -34,6 +34,8 @@ class Usecka:
     def delkaUsecky(self):
         return math.sqrt(math.pow(self.__a.x - self.__b.x, 2) + math.pow(self.__a.y - self.__b.y, 2))
     
+clear()
+
 B = Bod()
 B.nastavSouradnice(1, -2)
 print(B)

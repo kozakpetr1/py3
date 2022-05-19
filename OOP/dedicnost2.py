@@ -35,6 +35,8 @@ class Usecka(Bod):
     def delkaUsecky(self):
         return math.sqrt(math.pow(self.u - self.x, 2) + math.pow(self.v - self.y, 2))
     
+clear()
+
 B = Bod()
 B.nastavSouradnice(1, -2)
 print(B)
