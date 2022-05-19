@@ -36,7 +36,7 @@ class EncryptionInterface:
         """
         pass
     
-    def decrypt(self, **kwargs):
+    def decrypt(self, **kwargs) -> str:
         """
         Text decryption method - stores decrypted text in __decrypted property
 
@@ -91,7 +91,7 @@ class Caesar(EncryptionInterface):
 
         return self.__encrypted
     
-    def decrypt(self, **kwargs):
+    def decrypt(self, **kwargs) -> str:
         self.__encrypted = str(kwargs["txt"]) if "txt" in kwargs.keys() else self.__encrypted
         aIndex = ord("A")
         for c in self.__encrypted:
@@ -107,4 +107,4 @@ encrTxt = S.encrypt(txt = "čšUŽř šsůúiýáď+-", showTranscripted = True)
 print(encrTxt)
 
 decrTxt = S.decrypt(txt = encrTxt)
-print(decrTxt) 
+print(decrTxt)

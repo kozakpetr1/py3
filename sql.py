@@ -10,10 +10,10 @@ try:
         cursor.execute("select database();")
         record = cursor.fetchone()
         print("You're connected to database: ", record)
-        query = ("SELECT * FROM lang")
+        query = ("SELECT * FROM author WHERE surname LIKE 'B%';")
         cursor.execute(query)
-        for (idlang, designation, created) in cursor:
-            print("Language {} was created in {}.".format(designation, created))
+        for (idauthor, firstname, surname, company) in cursor:
+            print("Author: {} {}".format(firstname, surname))
 
 except Error as e:
     print("Error while connecting to MySQL", e)
