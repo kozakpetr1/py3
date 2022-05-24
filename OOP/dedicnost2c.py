@@ -1,3 +1,9 @@
+""" Dědičnost
+    Usecka používá jako vstupní parametry konstruktoru __init__ instance třídy Bod.
+    Hodnoty souřadnic jsou předávány v podobě slovníku, např. {"x": 1, "y": 3}.
+
+"""
+
 import os
 import math
 
@@ -6,14 +12,14 @@ clear = lambda: os.system('cls')
 class Bod:
     
     def __init__(self, B: dict):
-        self.B = B
+        self.souradnice = B
 
     def nastavSouradnice(self, x, y):
-        self.B["x"] = x
-        self.B["Y"] = y
+        self.souradnice["x"] = x
+        self.souradnice["y"] = y
 
     def __str__(self):
-        return "[{},{}]".format(self.B["x"], self.B["y"])
+        return "[{},{}]".format(self.souradnice["x"], self.souradnice["y"])
     
 class Usecka:
 
@@ -26,10 +32,10 @@ class Usecka:
         self.__b.nastavSouradnice(B["x"], B["y"])
 
     def __str__(self):
-        return  "[{},{}][{},{}]".format(self.__a.B["x"], self.__a.B["y"], self.__b.B["x"], self.__b.B["y"])
+        return  "[{},{}][{},{}]".format(self.__a.souradnice["x"], self.__a.souradnice["y"], self.__b.souradnice["x"], self.__b.souradnice["y"])
 
     def delkaUsecky(self):
-        return math.sqrt(math.pow(self.__a.B["x"] - self.__b.B["x"], 2) + math.pow(self.__a.B["y"] - self.__b.B["y"], 2))
+        return math.sqrt(math.pow(self.__a.souradnice["x"] - self.__b.souradnice["x"], 2) + math.pow(self.__a.souradnice["y"] - self.__b.souradnice["y"], 2))
     
 clear()
 

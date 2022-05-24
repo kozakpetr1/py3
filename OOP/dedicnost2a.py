@@ -1,3 +1,8 @@
+""" Dědičnost
+    Usecka vytváří objekty třídy Bod v konstruktoru __init__.
+
+"""
+
 import os
 import math
 

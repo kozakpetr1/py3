@@ -1,3 +1,8 @@
+""" Dědičnost
+    Usecka používá jako vstupní parametry konstruktoru __init__ instance třídy Bod.
+
+"""
+
 import os
 import math
 
