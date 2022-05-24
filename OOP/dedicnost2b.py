@@ -18,10 +18,10 @@ class Bod:
     
 class Usecka:
 
-    def __init__(self, u=0, v=0, x=0, y=0):
-        self.__a = Bod(u, v)
-        self.__b = Bod(x, y)
-    
+    def __init__(self, A: Bod, B: Bod):
+        self.__a = A
+        self.__b = B
+
     def nastavSouradnice(self, u, v, x, y):
         self.__a.nastavSouradnice(u, v)
         self.__b.nastavSouradnice(x, y)
@@ -38,6 +38,8 @@ B = Bod()
 B.nastavSouradnice(1, -2)
 print(B)
 
-U = Usecka(1, 3, 4, -1)
+D = Bod(1, 3)
+E = Bod(4, -1)
+U = Usecka(D, E)
 print(U)
 print(f"{U.delkaUsecky():.2f}")
