@@ -1,3 +1,8 @@
+""" Dědičnost
+    Úsečka jako potomek třídy Bod.
+
+"""
+
 import os
 import math
 
