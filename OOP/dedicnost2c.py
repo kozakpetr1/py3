@@ -1,5 +1,6 @@
 """ Dědičnost
     Usecka používá jako vstupní parametry konstruktoru __init__ instance třídy Bod.
+    Instance třídy Bod jsou vytvořeny mimo instanci třídy Usecka.
     Hodnoty souřadnic jsou předávány v podobě slovníku, např. {"x": 1, "y": 3}.
 
 """
