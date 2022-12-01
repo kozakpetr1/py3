@@ -22,7 +22,7 @@ print(firstName[0])
 print(lastName)
 print(born)
 print(bestKnown)
-print(about.format(fullName, age, bodyHeight, bestKnown))
+print(about.format(fullName, str(age), bodyHeight, bestKnown))
 
 print(type(firstName))
 print(type(age))

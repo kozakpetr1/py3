@@ -10,7 +10,7 @@ myIQ = 120
 yourIQ = int(input("Type your IQ: "))
 
 if myIQ > yourIQ:
-    print("My IQ is greater then your IQ.")
+    print("My IQ is greater than your IQ.")
 else:
     print("Impossible!")
 
