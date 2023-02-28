@@ -14,4 +14,4 @@ match winner:
     case 1 : print("papir")
     case 2 : print("nuzky")
     case 3 : print("remiza")
-    case other: print("error")
+    case other : print("error")
