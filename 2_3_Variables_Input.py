@@ -19,4 +19,4 @@ while True:
         ageInt2 = int(input("How old are you? "))
         break
     except ValueError:
-        print("Oops! That was no valid number. Try again...")
+        print("Oops! That is not valid number. Try again...")
