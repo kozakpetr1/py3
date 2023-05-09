@@ -1,1 +1,0 @@
-from textooo.texto import Texto
