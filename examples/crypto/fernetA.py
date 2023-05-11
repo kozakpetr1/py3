@@ -53,8 +53,6 @@ class crpt():
     def __str__(self) -> str:
         return f"{self.__what_to_do} {self.__file} {self.__key_file}"
     
-    """ 
-    """
     def check(self) -> bool:
         """Checkuj vstupní argumenty příkazového řádku
 
@@ -62,7 +60,6 @@ class crpt():
             bool: Vrací True, když jsou argumenty OK
         """
         return True if (self.check_key_file() and self.check_file() and self.check_cmd()) else False
-    
 
     def crypto(self) -> bool:
         """Šifruj bo dešifruj fajl __file

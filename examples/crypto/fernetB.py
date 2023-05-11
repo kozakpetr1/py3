@@ -48,9 +48,6 @@ def check_cmd() -> bool:
     """
     return True if (s["__what_to_do"] in ("-d", "-e")) else False
     
-def __str__(self) -> str:
-    return s["__what_to_do"] + " " + s["__file"] + " " + s["__key_file"]
-
 def check() -> bool:
     """Checkuj vstupní argumenty příkazového řádku
 
@@ -59,7 +56,6 @@ def check() -> bool:
     """
     return True if (check_key_file() and check_file() and check_cmd()) else False
     
-
 def crypto() -> bool:
     """Šifruj bo dešifruj fajl __file
 
