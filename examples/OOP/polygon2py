@@ -1,0 +1,49 @@
+class Polygon:
+    '''
+    Třída polygon definuje obecný polygon o n hranách.
+    '''
+    
+    amount_of_objects = 0;
+    
+    def __init__(self):
+        Polygon.amount_of_objects += 1
+
+    def __del__(self):
+        Polygon.amount_of_objects -= 1
+
+    def num_of_sides(self):
+        '''
+        Metoda zobrazi typ polygonu a počet hran.
+        '''
+        
+        pass
+
+class Triangle(Polygon):
+    
+    def num_of_sides(self):
+        print("Ahoj, já jsem trojúhelník a mám tři hrany.")
+
+class Rectangular_Triangle(Triangle):
+    
+    def num_of_sides(self):
+        print("Ahoj, já jsem pravoúhlý trojúhelník a mám tři hrany.")
+
+class Pentagon(Polygon):
+    
+    def num_of_sides(self):
+        print("Ahoj, já jsem pentagon a mám pět stran.")
+
+my_triangle = Triangle()
+my_triangle.num_of_sides()
+print(Polygon.amount_of_objects)
+
+my_rectangular_triangle = Rectangular_Triangle()
+my_rectangular_triangle.num_of_sides()
+print(Polygon.amount_of_objects)
+
+my_pentagon = Pentagon()
+my_pentagon.num_of_sides()
+print(Polygon.amount_of_objects)
+
+del my_pentagon
+print(Polygon.amount_of_objects)

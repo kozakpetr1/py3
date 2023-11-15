@@ -1,7 +1,4 @@
-""" Dědičnost
-    Usecka vytváří objekty třídy Bod v konstruktoru __init__.
-    Dvě instance třídy Bod jsou pak součástí instance třídy Usecka jako atributy.
-    Jedná se o tzv. skládání.
+""" 
     
 """
 
