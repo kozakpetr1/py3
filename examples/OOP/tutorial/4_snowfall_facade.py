@@ -124,13 +124,19 @@ class Snowflake:
     def draw(self, surface, white):
         pygame.draw.circle(surface, white[self.__color], (self.__x, self.__y), self.__size)
 
-# snow = Snowfall(snowflakes_amount = 1000)
+snow = Snowfall()
+
+"""
 snow = Snowfall(\
-    caption = "Pro Klárku",\
+    caption = "Vánoce",\
     width = 900,\
     height = 600,\
     speed = 50,\
-    # snowflakes_amount = 250,\
-    # bg_image = ("santa.jpg", "sleigh.jpg", "pinus.jpg")
+    snowflakes_amount = 250,\
+    snowflake_to_add = 50,\
+    interval = 25, \
+    bg_image = ("santa.jpg",),\
+    white = ((255, 0, 0, 10),(0, 255, 0, 10),(0, 0, 255, 10))
 )
+"""
 snow.go()
