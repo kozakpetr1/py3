@@ -12,7 +12,7 @@ white = ((250, 250, 250, 10),(240,240,240, 10),(230, 230, 230, 10))
 
 surface = pygame.display.set_mode((width, height), pygame.SRCALPHA)
 pygame.display.set_caption("Snowfall Screensaver")
-bg = pygame.image.load(f"{os.path.dirname(os.path.realpath(__file__))}\\img\\sleigh.jpg")
+# bg = pygame.image.load(f"{os.path.dirname(os.path.realpath(__file__))}\\img\\sleigh.jpg")
 
 pygame.mouse.set_visible(0)
 pygame.display.flip()

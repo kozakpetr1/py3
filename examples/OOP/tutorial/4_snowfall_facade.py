@@ -12,8 +12,6 @@ class Snowfall:
         pygame.init()
 
         pygame.mixer.init()
-        pygame.mixer.music.load(f"{os.path.dirname(os.path.realpath(__file__))}\\sound\\Magenta Six - Christmas 2.mp3")
-        pygame.mixer.music.play()
 
         # self.__monitors = get_monitors()
         self.__info = pygame.display.Info()
@@ -22,11 +20,17 @@ class Snowfall:
         self.__snowflakes_amount = kwargs['snowflakes_amount'] if 'snowflakes_amount' in kwargs else self.__width * self.__height // 2000
         self.__snowflakes_to_add = kwargs['snowflakes_to_add'] if 'snowflakes_to_add' in kwargs else self.__width // 20
         self.__bg_image = kwargs['bg_image'] if 'bg_image' in kwargs else ("forest.jpg", "tree.jpg", "portrait.jpg", "road.jpg", "snowman.jpg", "church.jpg", "crystal.jpg", "nature.jpg", "sleigh.jpg", "prague.jpg", "santa.jpg", "woman.jpg", "ginger.jpg", "pinus.jpg")
+        self.__bg_sound = kwargs['bg_sound'] if 'bg_sound' in kwargs else ("Magenta Six - Christmas 1.mp3", "Magenta Six - Christmas 2.mp3")
         self.__white = kwargs['white'] if 'white' in kwargs else ((250, 250, 250, 10),(240,240,240, 10),(230, 230, 230, 10))
         self.__caption = kwargs['caption'] if 'caption' in kwargs else "Snowfall Screensaver"
         self.__speed = kwargs['speed'] if 'speed' in kwargs else 30
         self.__interval = kwargs['interval'] if 'interval' in kwargs else self.__width // 20
+        self.__amplitude = kwargs['amplitude'] if 'amplitude' in kwargs else 90
+        self.__movement = random.randint(0, 1)
         
+        pygame.mixer.music.load(f"{os.path.dirname(os.path.realpath(__file__))}\\sound\\{self.__bg_sound[random.randint(0, len(self.__bg_sound) - 1)]}")
+        pygame.mixer.music.play()
+
         self.__snowflakes = []
 
         self.__surface = pygame.display.set_mode((self.__width, self.__height), pygame.SRCALPHA, pygame.RESIZABLE)
@@ -65,6 +69,15 @@ class Snowfall:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == pygame.MOUSEWHEEL:
+                    if event.y == 1:
+                        self.__speed = self.__speed + 5 if self.__speed < 200 else 200
+                    elif event.y == -1:
+                        self.__speed = self.__speed - 5 if self.__speed > 15 else 15 
+                    if event.x == 1:
+                        self.__amplitude = self.__amplitude + 5 if self.__amplitude < 360 else 360
+                    elif event.x == -1:
+                        self.__amplitude = self.__amplitude - 5 if self.__amplitude > 30 else 30
                 if event.type == pygame.MOUSEBUTTONUP:
                     if event.button == 1 and (len(self.__snowflakes) < self.__width): 
                         self.__pos = pygame.mouse.get_pos()
@@ -92,7 +105,7 @@ class Snowfall:
             self.__surface.blit(self.__bg, (0,0))  
 
             for snowflake in self.__snowflakes:
-                snowflake.fall(self.__width, self.__height)
+                snowflake.fall(self.__width, self.__height, self.__amplitude)
                 snowflake.draw(self.__surface, self.__white)
 
             pygame.display.flip()
@@ -106,13 +119,13 @@ class Snowflake:
         self.__wind = random.randint(-1,1)
         self.__color = random.randint(0, 2)
 
-    def fall(self, width, height):
+    def fall(self, width, height, amplitude):
         self.__y += self.__size
 
         if self.__wind == -1:
-            self.__x += math.sin(self.__y/90)
+            self.__x += math.sin(self.__y/amplitude)
         elif self.__wind == 1:
-            self.__x += math.cos(self.__y/90)           
+            self.__x += math.cos(self.__y/amplitude)           
 
         if self.__y > height:
             self.__y = 0
@@ -124,19 +137,19 @@ class Snowflake:
     def draw(self, surface, white):
         pygame.draw.circle(surface, white[self.__color], (self.__x, self.__y), self.__size)
 
-snow = Snowfall()
+# snow = Snowfall()
 
-"""
 snow = Snowfall(\
     caption = "Vánoce",\
     width = 900,\
     height = 600,\
     speed = 50,\
-    snowflakes_amount = 250,\
+    snowflakes_amount = 300,\
     snowflake_to_add = 50,\
-    interval = 25, \
-    bg_image = ("santa.jpg",),\
-    white = ((255, 0, 0, 10),(0, 255, 0, 10),(0, 0, 255, 10))
+    interval = 25,\
+    amplitude = 90,\
+    # bg_image = ("santa.jpg",),\
+    # white = ((255, 0, 0, 10),(0, 255, 0, 10),(0, 0, 255, 10))
 )
-"""
+
 snow.go()
