@@ -26,10 +26,13 @@ class Snowfall:
         self.__speed = kwargs['speed'] if 'speed' in kwargs else 30
         self.__interval = kwargs['interval'] if 'interval' in kwargs else self.__width // 20
         self.__amplitude = kwargs['amplitude'] if 'amplitude' in kwargs else 90
+        self.__arrow = 0
+        self.__stat = False
+        self.__rect = None
         self.__movement = random.randint(0, 1)
         
         pygame.mixer.music.load(f"{os.path.dirname(os.path.realpath(__file__))}\\sound\\{self.__bg_sound[random.randint(0, len(self.__bg_sound) - 1)]}")
-        pygame.mixer.music.play()
+        pygame.mixer.music.play(-1)
 
         self.__snowflakes = []
 
@@ -60,6 +63,11 @@ class Snowfall:
             if len(self.__snowflakes) > 0:
                 self.__snowflakes.pop(random.randint(0, len(self.__snowflakes)-1))
 
+    def stat(self):
+        self.__rect = pygame.draw.rect(self.__surface, (100, 100, 100), (20, 20, 100, 50))
+        self.__rect = pygame.Surface((250, 150))
+        self.__rect.fill((100, 100, 100, 10))
+        
     def go(self):
         
         self.generateSnowflakes()
@@ -73,13 +81,13 @@ class Snowfall:
                     if event.y == 1:
                         self.__speed = self.__speed + 5 if self.__speed < 200 else 200
                     elif event.y == -1:
-                        self.__speed = self.__speed - 5 if self.__speed > 15 else 15 
+                        self.__speed = self.__speed - 5 if self.__speed > 25 else 25 
                     if event.x == 1:
                         self.__amplitude = self.__amplitude + 5 if self.__amplitude < 360 else 360
                     elif event.x == -1:
                         self.__amplitude = self.__amplitude - 5 if self.__amplitude > 30 else 30
                 if event.type == pygame.MOUSEBUTTONUP:
-                    if event.button == 1 and (len(self.__snowflakes) < self.__width): 
+                    if event.button == 1 and (len(self.__snowflakes) < (self.__width * 3)): 
                         self.__pos = pygame.mouse.get_pos()
                         self.addSnowflakes()
                     if event.button == 2:
@@ -100,12 +108,27 @@ class Snowfall:
                         self.__surface = pygame.display.set_mode((self.__width, self.__height), pygame.SRCALPHA, pygame.RESIZABLE)
                         self.__bg = pygame.transform.scale(self.__bg, (self.__width, self.__height))
                         pygame.display.flip()
+                    if event.key == pygame.K_LEFT:
+                        self.__arrow = -1
+                    if event.key == pygame.K_RIGHT:
+                        self.__arrow = 1
+                    if event.key == pygame.K_DOWN:
+                        self.__arrow = 0
+                    if event.key == pygame.K_s:
+                        if self.__stat == False:
+                            self.__stat = True
+                            if self.__rect == None:
+                                self.stat()
+                        else:
+                            self.__stat = False
 
             # self.__surface.fill((0,0,0))
-            self.__surface.blit(self.__bg, (0,0))  
+            self.__surface.blit(self.__bg, (0,0))
+            if self.__rect:
+                self.__surface.blit(self.__rect, (10, 10))
 
             for snowflake in self.__snowflakes:
-                snowflake.fall(self.__width, self.__height, self.__amplitude)
+                snowflake.fall(self.__width, self.__height, self.__amplitude, self.__arrow)
                 snowflake.draw(self.__surface, self.__white)
 
             pygame.display.flip()
@@ -115,28 +138,28 @@ class Snowflake:
     def __init__(self, x, y, width, height):
         self.__x = x
         self.__y = y
-        self.__size = random.randint(2, 5)
+        self.__size = random.randint(1, 4)
         self.__wind = random.randint(-1,1)
         self.__color = random.randint(0, 2)
 
-    def fall(self, width, height, amplitude):
+    def fall(self, width, height, amplitude, arrow):
         self.__y += self.__size
-
         if self.__wind == -1:
-            self.__x += math.sin(self.__y/amplitude)
+            self.__x += math.sin(self.__y/(amplitude)) + 2 * arrow
         elif self.__wind == 1:
-            self.__x += math.cos(self.__y/amplitude)           
-
+            self.__x += math.cos(self.__y/(amplitude)) - 2 * arrow
+            
         if self.__y > height:
             self.__y = 0
             self.__x = random.randint(0, width)
-            self.__size = random.randint(2, 5)
+            self.__size = random.randint(1, 4)
             self.__wind = random.randint(-1,1)
             self.__color = random.randint(0, 2)
 
     def draw(self, surface, white):
         pygame.draw.circle(surface, white[self.__color], (self.__x, self.__y), self.__size)
-
+    
+    
 # snow = Snowfall()
 
 snow = Snowfall(\
@@ -144,7 +167,7 @@ snow = Snowfall(\
     width = 900,\
     height = 600,\
     speed = 50,\
-    snowflakes_amount = 300,\
+    snowflakes_amount = 1800,\
     snowflake_to_add = 50,\
     interval = 25,\
     amplitude = 90,\
