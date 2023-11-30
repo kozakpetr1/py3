@@ -3,6 +3,7 @@ import sys
 import random
 import math
 import os
+from datetime import datetime
 
 
 class Snowfall:
@@ -30,6 +31,7 @@ class Snowfall:
         self.__stat = False
         self.__rect = None
         self.__movement = random.randint(0, 1)
+        self.__timestamp = datetime.timestamp(datetime.now())
         
         pygame.mixer.music.load(f"{os.path.dirname(os.path.realpath(__file__))}\\sound\\{self.__bg_sound[random.randint(0, len(self.__bg_sound) - 1)]}")
         pygame.mixer.music.play(-1)
@@ -73,6 +75,7 @@ class Snowfall:
         self.generateSnowflakes()
 
         while True:
+                
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -126,6 +129,11 @@ class Snowfall:
             self.__surface.blit(self.__bg, (0,0))
             if self.__rect:
                 self.__surface.blit(self.__rect, (10, 10))
+
+            if self.__timestamp + 1000 < datetime.timestamp(datetime.now()):
+                self.__timestamp = datetime.timestamp(datetime.now())
+                self.__bg = pygame.image.load(f"{os.path.dirname(os.path.realpath(__file__))}\\img\\{self.__bg_image[random.randint(0, len(self.__bg_image) - 1)]}")
+                self.__bg = pygame.transform.scale(self.__bg, (self.__width, self.__height))
 
             for snowflake in self.__snowflakes:
                 snowflake.fall(self.__width, self.__height, self.__amplitude, self.__arrow)
