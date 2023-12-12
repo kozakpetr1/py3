@@ -20,7 +20,7 @@ class Snowfall:
         self.__height = kwargs['height'] if 'height' in kwargs else self.__info.current_h
         self.__snowflakes_amount = kwargs['snowflakes_amount'] if 'snowflakes_amount' in kwargs else self.__width * self.__height // 2000
         self.__snowflakes_to_add = kwargs['snowflakes_to_add'] if 'snowflakes_to_add' in kwargs else self.__width // 20
-        self.__bg_image = kwargs['bg_image'] if 'bg_image' in kwargs else ("forest.jpg", "tree.jpg", "portrait.jpg", "road.jpg", "snowman.jpg", "church.jpg", "crystal.jpg", "nature.jpg", "sleigh.jpg", "prague.jpg", "santa.jpg", "woman.jpg", "ginger.jpg", "pinus.jpg")
+        self.__bg_image = kwargs['bg_image'] if 'bg_image' in kwargs else ("forest.jpg", "tree.jpg", "road.jpg", "snowman.jpg", "church.jpg", "crystal.jpg", "nature.jpg", "sleigh.jpg", "prague.jpg", "santa.jpg", "pinus.jpg")
         self.__bg_sound = kwargs['bg_sound'] if 'bg_sound' in kwargs else ("Magenta Six - Christmas 1.mp3", "Magenta Six - Christmas 2.mp3")
         self.__white = kwargs['white'] if 'white' in kwargs else ((250, 250, 250, 10),(240,240,240, 10),(230, 230, 230, 10))
         self.__caption = kwargs['caption'] if 'caption' in kwargs else "Snowfall Screensaver"
@@ -66,7 +66,7 @@ class Snowfall:
                 self.__snowflakes.pop(random.randint(0, len(self.__snowflakes)-1))
 
     def stat(self):
-        self.__rect = pygame.draw.rect(self.__surface, (100, 100, 100), (20, 20, 100, 50))
+        self.__rect = pygame.draw.rect(self.__surface, (100, 100, 100), (20, 20, 100, 50), 2)
         self.__rect = pygame.Surface((250, 150))
         self.__rect.fill((100, 100, 100, 10))
         
@@ -130,7 +130,7 @@ class Snowfall:
             if self.__rect:
                 self.__surface.blit(self.__rect, (10, 10))
 
-            if self.__timestamp + 1000 < datetime.timestamp(datetime.now()):
+            if self.__timestamp + 20 < datetime.timestamp(datetime.now()):
                 self.__timestamp = datetime.timestamp(datetime.now())
                 self.__bg = pygame.image.load(f"{os.path.dirname(os.path.realpath(__file__))}\\img\\{self.__bg_image[random.randint(0, len(self.__bg_image) - 1)]}")
                 self.__bg = pygame.transform.scale(self.__bg, (self.__width, self.__height))
@@ -172,8 +172,8 @@ class Snowflake:
 
 snow = Snowfall(\
     caption = "Vánoce",\
-    width = 900,\
-    height = 600,\
+    # width = 900,\
+    # height = 600,\
     speed = 50,\
     snowflakes_amount = 1800,\
     snowflake_to_add = 50,\
