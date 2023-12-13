@@ -5,7 +5,7 @@ import os
 
 class Server:
     
-    mood = ['I am OK.', 'Angry!', 'Bad mood!', 'Good mood!', 'Do not give me this kind of questions!']
+    mood = ['I am OK.', 'Angry!', 'Bad mood!', 'Good mood!', 'Do not send me this kind of questions!']
     hobbies = ['Communication', 'Programming', 'Trolling', 'Hacking', 'Crashing', 'Lying']
   
     def __init__(self, **kwargs):
@@ -34,7 +34,7 @@ class Server:
                 case _ : return None
 
     def listen(self):
-        print("Listening...")
+        print(f"Listening on {self.__host}:{self.__port}")
         self.__server_socket.listen(2)
         self.__conn, self.__address = self.__server_socket.accept()
         print("<- " + str(self.__address))
@@ -52,5 +52,5 @@ class Server:
         self.__conn.close()
 
 if __name__ == '__main__':
-    server = Server()
+    server = Server(host = "192.168.12.86")
     server.listen()

@@ -33,5 +33,5 @@ class Client:
         self.__client_socket.close()
         
 if __name__ == '__main__':
-    client = Client()
+    client = Client(ost = "192.168.56.1", port=50000)
     client.go()
