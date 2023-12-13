@@ -8,7 +8,8 @@ class Server:
     
     mood = ['I am OK.', 'Angry!', 'Bad mood!', 'Good mood!', 'Do not send me this kind of questions!']
     hobbies = ['Communication', 'Programming', 'Trolling', 'Hacking', 'Crashing', 'Lying']
-  
+    name = ['Brutus', 'Thanos', 'Longinus', 'Xavier', 'Sasa', 'Obama', 'Trump', 'Biden']
+
     def __init__(self, **kwargs):
 
         self.__host = kwargs['host'] if 'host' in kwargs else socket.gethostname()
@@ -33,12 +34,14 @@ class Server:
                 case 'Hi!': return 'Hello!'
                 case '#rand': return str(r.randint(1, 1000))
                 case '#finger': return self.__ascii['finger']
+                case '#clown': return self.__ascii['clown']
                 case '#clear':
                     os.system('cls')
                     return 'Server clearscreen finished.'
                 case '#cwd': return os.getcwd()        
-                case 'Your mood?': return Server.mood[r.randint(0, 4)]
-                case 'Your hobbies?': return Server.hobbies[r.randint(0, 5)]
+                case 'Your mood?': return Server.mood[r.randint(0, len(Server.mood) - 1)]
+                case 'Your hobbies?': return Server.hobbies[r.randint(0, len(Server.hobbies) - 1)]
+                case 'Your name?': return Server.name[r.randint(0, len(Server.name) - 1)]
                 case _ : return None
 
     def listen(self):
