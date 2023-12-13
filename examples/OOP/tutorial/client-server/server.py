@@ -2,6 +2,7 @@ import socket
 import random as r
 import re
 import os
+from pathlib import Path
 
 class Server:
     
@@ -15,7 +16,13 @@ class Server:
 
         self.__server_socket = socket.socket()  # get instance
         self.__server_socket.bind((self.__host, self.__port))
-
+        
+        self.__ascii = {}
+ 
+        for p in Path(f"{os.path.dirname(os.path.realpath(__file__))}\\cmds\\").glob('*'):
+            with p.open() as f:
+                self.__ascii[f"{p.name}"] = f.read()
+        
     def compile(self):
             
         if re.search("^=.*$", self.__recieved_data):
@@ -25,6 +32,7 @@ class Server:
             
                 case 'Hi!': return 'Hello!'
                 case '#rand': return str(r.randint(1, 1000))
+                case '#finger': return self.__ascii['finger']
                 case '#clear':
                     os.system('cls')
                     return 'Server clearscreen finished.'
@@ -44,7 +52,7 @@ class Server:
             if not self.__recieved_data:
                 break
             print("<- " + str(self.__recieved_data))
-            self.__data = self.compile() 
+            self.__data = self.compile()
             if self.__data == None:
                 self.__data = input(' $ ')
             self.__conn.send(self.__data.encode())
@@ -52,5 +60,5 @@ class Server:
         self.__conn.close()
 
 if __name__ == '__main__':
-    server = Server(host = "192.168.12.86")
+    server = Server()
     server.listen()

@@ -24,7 +24,7 @@ class Client:
             self.__data = self.__client_socket.recv(1024).decode()
             print('-> ', end ="")
             for char in self.__data:
-                sleep(r.random() * 0.25)
+                sleep(r.random() * 0.05)
                 sys.stdout.write(char)
                 sys.stdout.flush()
             print("")
@@ -33,5 +33,5 @@ class Client:
         self.__client_socket.close()
         
 if __name__ == '__main__':
-    client = Client(ost = "192.168.56.1", port=50000)
+    client = Client()
     client.go()
