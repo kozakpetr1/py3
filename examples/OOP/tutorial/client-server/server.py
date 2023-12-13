@@ -19,6 +19,7 @@ class Server:
         self.__server_socket.bind((self.__host, self.__port))
         
         self.__ascii = {}
+        self.__wallet = 0
  
         for p in Path(f"{os.path.dirname(os.path.realpath(__file__))}\\cmds\\").glob('*'):
             with p.open() as f:
@@ -28,6 +29,12 @@ class Server:
             
         if re.search("^=.*$", self.__recieved_data):
             return str(eval(self.__recieved_data[1:]))
+        elif re.search("^\+[0-9]*$", self.__recieved_data):
+            self.__wallet += int(self.__recieved_data[1:])
+            return "Your wallet: " + str(self.__wallet)
+        elif re.search("^\-[0-9]*$", self.__recieved_data):
+            self.__wallet -= int(self.__recieved_data[1:])
+            return "Your wallet: " + str(self.__wallet)
         else:
             match(self.__recieved_data):
             
