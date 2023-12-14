@@ -9,13 +9,14 @@ class Server:
     mood = ['I am OK.', 'Angry!', 'Bad mood!', 'Good mood!', 'Do not send me this kind of questions!']
     hobbies = ['Communication', 'Programming', 'Trolling', 'Hacking', 'Crashing', 'Lying']
     name = ['Brutus', 'Thanos', 'Longinus', 'Xavier', 'Sasa', 'Obama', 'Trump', 'Biden']
+    color = ['pink', 'rainbow', 'black&white', 'yellow', 'orange', 'blue']
 
     def __init__(self, **kwargs):
 
         self.__host = kwargs['host'] if 'host' in kwargs else socket.gethostname()
         self.__port = kwargs['port'] if 'port' in kwargs else 5000
 
-        self.__server_socket = socket.socket()  # get instance
+        self.__server_socket = socket.socket()
         self.__server_socket.bind((self.__host, self.__port))
         
         self.__ascii = {}
@@ -53,6 +54,7 @@ class Server:
                 case 'Your mood?': return Server.mood[r.randint(0, len(Server.mood) - 1)]
                 case 'Your hobbies?': return Server.hobbies[r.randint(0, len(Server.hobbies) - 1)]
                 case 'Your name?': return Server.name[r.randint(0, len(Server.name) - 1)]
+                case 'Your color?': return Server.color[r.randint(0, len(Server.color) - 1)]
                 case _ : return None
 
     def listen(self):
