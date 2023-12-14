@@ -1,0 +1,22 @@
+Hi! You can:
+- type some text and wait for response
+- use some command aliases:
+    #help - shoes this help
+    #rand - returns pseudorandom int number in [0..1000]
+    #cwd  - returns current working directory
+    #finger - gives some fun response from server
+    #clown - gives some fun response from server
+    #clear - clears server terminal screen
+    #clearf - clears server terminal screen fancily
+- type some special text to get automated responce
+    - Hi!
+    - Your mood?
+    - Your hobbies?
+    - Your name?
+    - bye - termination of client and server
+- perform some calculations using +,-,*,/,% operators and parentheses
+    - e.g.: =2**10 - the tenth power of two
+- use wallet
+    - +<int number> to add some money to your wallet, e.g.: +1000
+    - -<int number> to take some money from wallet, e.g.: -500
+- 

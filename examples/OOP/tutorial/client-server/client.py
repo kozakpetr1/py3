@@ -1,5 +1,6 @@
 import socket
 import sys
+import os
 from time import sleep
 import random as r
 
@@ -16,6 +17,7 @@ class Client:
 
     def go(self):
         
+        os.system('cls')
         r.seed()
         self.__message = input(" $ ") 
         

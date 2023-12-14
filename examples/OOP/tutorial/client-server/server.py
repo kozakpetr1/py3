@@ -27,7 +27,7 @@ class Server:
         
     def compile(self):
             
-        if re.search("^=.*$", self.__recieved_data):
+        if re.search("^=[0-9+-\.()%/*]+$", self.__recieved_data):
             return str(eval(self.__recieved_data[1:]))
         elif re.search("^\+[0-9]*$", self.__recieved_data):
             self.__wallet += int(self.__recieved_data[1:])
@@ -42,8 +42,12 @@ class Server:
                 case '#rand': return str(r.randint(1, 1000))
                 case '#finger': return self.__ascii['finger']
                 case '#clown': return self.__ascii['clown']
+                case '#help': return self.__ascii['help']
                 case '#clear':
                     os.system('cls')
+                    return 'Server clearscreen finished.'
+                case '#fclear':
+                    os.system('powershell.exe Clear-HostFancily')
                     return 'Server clearscreen finished.'
                 case '#cwd': return os.getcwd()        
                 case 'Your mood?': return Server.mood[r.randint(0, len(Server.mood) - 1)]
@@ -52,6 +56,7 @@ class Server:
                 case _ : return None
 
     def listen(self):
+        os.system('cls')
         print(f"Listening on {self.__host}:{self.__port}")
         self.__server_socket.listen(2)
         self.__conn, self.__address = self.__server_socket.accept()
