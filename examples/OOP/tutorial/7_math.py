@@ -14,7 +14,7 @@ class M:
         
     @staticmethod
     @check
-    def abs(num) -> bool:
+    def abs(num) -> int:
         return num if num > 0 else -num
     
     @staticmethod
