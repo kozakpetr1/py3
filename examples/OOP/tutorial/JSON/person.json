@@ -1,0 +1,8 @@
+{
+    "name": "Petr",
+    "surname": "Kozák",
+    "status": "married",
+    "wife": "Martina",
+    "children": ["Klárka"],
+    "languages": ["Czech", "Slovak", "English"]
+}
