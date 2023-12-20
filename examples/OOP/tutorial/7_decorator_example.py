@@ -38,8 +38,8 @@ class Cafe:
 
     @staticmethod
     def check_type(func):
-        pass # zde doplnit kód dekorátoru
-    
+        pass # doplnit kód metody dekorátoru
+                   
     @staticmethod
     @check_type
     def addToMenu(type, size, price):

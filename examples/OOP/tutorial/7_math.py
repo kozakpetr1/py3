@@ -40,21 +40,38 @@ class M:
     @staticmethod
     @check
     def isPrimeNumber(num) -> bool:
-        pass
+        if num < 2:
+            return False
+        for i in range(2, int(num**0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
         
     @staticmethod
     @check
     def isLeapYear(num) -> bool:
-        pass
+        if (num % 4 == 0 and num % 100 != 0) or (num % 400 == 0):
+            return True
+        else:
+            return False    
     
     @staticmethod
     @check
     def isPerfectNumber(num) -> bool:
-        pass
+        abs_num = M.abs(num)
+        divisors_sum = sum(i for i in range(1, abs_num) if abs_num % i == 0)
+        return divisors_sum == abs_num
     
     @staticmethod
     @check
     def getSumOfDigits(num) -> int:
-        pass
+        abs_num = M.abs(num)
+        digit_sum = sum(int(digit) for digit in str(abs_num))
+        return digit_sum
     
-print(M.abs(-6))
+print(M.pi)
+print(M.e)
+print(M.getSumOfDigits(372))
+print(M.isPerfectNumber(8128))
+# print(M.abs(-6))
+# print(M.isPerfectNumber(28))
