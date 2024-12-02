@@ -42,4 +42,14 @@ def kalkulace(**kwargs):
         x += 120 * kwargs["koule"]
     return x
 
+def kalkulace2(**kwargs):
+    # [<mnozstvi>, <cena za 100 g>]
+    print(kwargs)
+    pocitadlo = 0
+    for klic, hodnota in kwargs.items():
+        print("Počítám cenu za: ", klic)
+        pocitadlo += hodnota[0] * hodnota[1]
+    return pocitadlo
+    
 print(kalkulace(koule = 5, hnizda = 10, pernicky = 7))
+print(kalkulace2(linecke = [5, 80], rohlicky = [7.5, 65], pernicky = [10, 75]))
