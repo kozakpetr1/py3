@@ -61,5 +61,5 @@ Implementujte třídu `Objednavka`, která umožňuje sestavování objednávky 
 ### Pokyny k odevzdání:  
 1. Vyberte si jednu z úloh.  
 2. Implementujte řešení v Pythonu.  
-3. Kód uložte do souboru pojmenovaného dle formátu: `jmeno_prijmeni_ulohaX.py`.  
-4. Odevzdejte vypracování na platformě pro sdílení úkolů do termínu: **[doplňte datum]**.
+3. Kód uložte do souboru pojmenovaného dle formátu: `jmeno_prijmeni_ulohaX.py`.
+
