@@ -1,0 +1,26 @@
+[
+    {
+        "question": "Hlavní město ČR?",
+        "answers": {
+            "c": "Ostrava",
+            "a": "Praha",
+            "b": "Brno"
+        },
+        "correct": [
+            "a"
+        ]
+    },
+    {
+        "question": "Řeky v ČR?",
+        "answers": {
+            "c": "Volha",
+            "b": "Vltava",
+            "d": "Mandava",
+            "a": "Amazonka"
+        },
+        "correct": [
+            "b",
+            "d"
+        ]
+    }
+]
