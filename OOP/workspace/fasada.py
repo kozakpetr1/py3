@@ -18,7 +18,6 @@ class VarnyKotel:
     def vareniSladiny(self):
         return "Vaření sladiny s chmelem pro získání hořkosti a aroma."
         
-
 class ChladiciZarizeni:
     
     def chlazeni(self):
