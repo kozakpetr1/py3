@@ -23,4 +23,8 @@ while i <= n:
     if isEven(i):
         print(i, end=" ")
     i += 1
-    
+
+i = 0    
+while i < 3:
+    i += 1
+print(i)
